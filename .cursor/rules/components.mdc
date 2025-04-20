@@ -1,0 +1,25 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 组件结构
+
+## 组件文件
+项目的组件文件位于 [src/components/](mdc:src/components) 目录中。
+
+主要组件：
+- [HelloWorld.vue](mdc:src/components/HelloWorld.vue): 欢迎组件
+- [TheWelcome.vue](mdc:src/components/TheWelcome.vue): 欢迎页面内容
+- [WelcomeItem.vue](mdc:src/components/WelcomeItem.vue): 欢迎页面项目组件
+
+## 组件命名规范
+- 通用组件以 `The` 前缀命名（如 `TheHeader`、`TheFooter`）
+- 单词使用 PascalCase 命名法
+- 组件文件名与组件名匹配
+
+## 图标组件
+图标组件位于 [src/components/icons/](mdc:src/components/icons) 目录中。
+
+## 组件测试
+组件测试文件位于 [src/components/__tests__/](mdc:src/components/__tests__) 目录。

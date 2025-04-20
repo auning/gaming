@@ -1,0 +1,33 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 开发工作流
+
+## 开发命令
+
+- **开发服务器**: `npm run dev` - 启动开发服务器
+- **构建应用**: `npm run build` - 构建生产版本
+- **预览构建**: `npm run preview` - 预览构建后的应用
+- **单元测试**: `npm run test:unit` - 运行单元测试
+- **端到端测试**: `npm run test:e2e` - 运行 Playwright 端到端测试
+- **代码检查**: `npm run lint` - 执行代码规范检查
+- **代码格式化**: `npm run format` - 格式化代码
+
+## 项目依赖
+
+主要依赖项：
+- Vue 3 - 前端框架
+- Vue Router - 路由管理
+- Pinia - 状态管理
+- Vite - 构建工具
+- Vitest - 单元测试框架
+- Playwright - 端到端测试框架
+
+## 目录结构约定
+
+- 新组件应放在 `src/components/` 目录下
+- 页面级组件应放在 `src/views/` 目录下
+- 共享状态应放在 `src/stores/` 目录下
+- 静态资源应放在 `src/assets/` 目录下

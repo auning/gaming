@@ -1,0 +1,56 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 组件开发规范
+
+## 组件结构
+
+Vue 组件应使用组合式 API (`<script setup>`) 并遵循以下结构：
+
+```vue
+<script setup>
+// 导入
+import { ref, computed } from 'vue'
+
+// 状态定义
+const count = ref(0)
+
+// 计算属性
+const doubleCount = computed(() => count.value * 2)
+
+// 方法
+const increment = () => {
+  count.value++
+}
+</script>
+
+<template>
+  <!-- 模板内容 -->
+</template>
+
+<style scoped>
+/* 样式内容 */
+</style>
+```
+
+## 组件命名规范
+
+- 组件文件使用 PascalCase 命名 (如 `CarouselBanner.vue`)
+- 通用/全局组件使用 `The` 前缀 (如 `TheHeader.vue`, `TheFooter.vue`)
+- 页面级组件使用 `View` 后缀 (如 `HomeView.vue`)
+
+## 组件示例
+
+主要组件示例:
+- [src/components/CarouselBanner.vue](mdc:src/components/CarouselBanner.vue): 轮播图组件
+- [src/components/Sidebar.vue](mdc:src/components/Sidebar.vue): 侧边栏组件
+- [src/components/TopNavigation.vue](mdc:src/components/TopNavigation.vue): 顶部导航组件
+
+## 组件设计原则
+
+1. **单一职责**: 每个组件应只负责一个功能
+2. **可重用性**: 组件应设计为可在多处重用
+3. **可维护性**: 保持组件代码清晰、注释完善
+4. **可测试性**: 组件应易于测试，逻辑与视图分离

@@ -1,0 +1,34 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 状态管理
+
+## Pinia 存储
+项目使用 Pinia 进行状态管理，存储文件位于 [src/stores/](mdc:src/stores) 目录中。
+
+## Store 命名规范
+- Store 文件以 `.js` 或 `.ts` 为后缀
+- 使用 camelCase 命名法
+- Store ID 应使用 camelCase 命名法（如 `useUserStore`）
+- 导出的 Store 应使用 `use` 前缀和 `Store` 后缀（如 `useUserStore`）
+
+## Store 结构
+每个 Store 应包含：
+- `state`: 存储状态
+- `getters`: 计算属性
+- `actions`: 方法，用于改变状态
+
+## Store 使用
+在组件中使用 Store：
+```js
+import { useUserStore } from '@/stores/user'
+
+export default {
+  setup() {
+    const userStore = useUserStore()
+    return { userStore }
+  }
+}
+```
