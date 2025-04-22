@@ -1,0 +1,71 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 性能优化指南
+
+## 组件优化
+- 使用 `v-show` 替代频繁切换的 `v-if`，减少组件销毁和创建
+- 为 `v-for` 循环提供唯一的 `key` 值
+- 避免在模板中使用复杂表达式，转移到计算属性中
+- 使用 `shallowRef` 和 `shallowReactive` 适当场景下优化大型不可变对象
+
+## 路由懒加载
+在 [src/router/index.js](mdc:src/router/index.js) 中使用动态导入实现路由懒加载：
+
+```javascript
+const routes = [
+  {
+    path: '/user',
+    component: () => import('../views/UserView.vue') // 懒加载
+  }
+]
+```
+
+## 资源优化
+- 图片使用适当的格式和压缩（WebP, SVG, 压缩的JPG/PNG）
+- 使用 `async` 和 `defer` 属性延迟加载非关键JavaScript
+- 大型第三方库考虑使用CDN或按需导入
+
+## Pinia状态管理优化
+- 避免在 store 中存储可以本地计算的数据
+- 合理使用 getters 进行派生状态的计算
+- 考虑将大型 store 拆分为多个小型专用 store
+
+## 计算属性缓存
+- 使用计算属性替代方法来进行数据转换
+- 对于开销较大的计算属性，考虑使用带缓存的函数
+
+```javascript
+import { computed } from 'vue'
+
+// 性能更好的做法，只有依赖项变化时才重新计算
+const formattedList = computed(() => {
+  return expensiveOperation(list.value)
+})
+```
+
+## 避免不必要的重新渲染
+- 使用 `v-once` 渲染只需渲染一次的内容
+- 对于大型不变列表，使用 `v-memo` 跳过重新渲染
+- 考虑将大型组件拆分为多个小组件，减少更新范围
+
+## 虚拟滚动
+对大型列表使用虚拟滚动库（如 vue-virtual-scroller）：
+
+```javascript
+import { RecycleScroller } from 'vue-virtual-scroller'
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+
+// 在组件中使用
+<RecycleScroller
+  class="scroller"
+  :items="items"
+  :item-size="50"
+  key-field="id"
+  v-slot="{ item }"
+>
+  <div class="item">{{ item.name }}</div>
+</RecycleScroller>
+```

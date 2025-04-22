@@ -1,0 +1,95 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# API集成规范
+
+## API请求结构
+项目使用 Axios 进行API请求，请参考以下规范：
+
+1. API请求应集中管理在 `src/services` 目录中
+2. 按照功能模块组织API请求函数
+
+## 请求封装
+创建统一的请求实例，配置基础URL和拦截器：
+
+```javascript
+// src/utils/api/index.js
+import axios from 'axios'
+
+const api = axios.create({
+  baseURL: 'http://127.0.0.1:9999/api',
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+
+// 请求拦截器
+api.interceptors.request.use(config => {
+  // 添加token等认证信息
+  return config
+})
+
+// 响应拦截器
+api.interceptors.response.use(
+  response => response.data,
+  error => Promise.reject(error)
+)
+
+export default api
+```
+
+## API模块化
+按功能模块拆分API请求:
+
+```javascript
+// src/utils/api/auth.js
+import api from './index'
+
+export const register = (userData) => {
+  return api.post('/user/register', userData)
+}
+
+export const login = (username, password) => {
+  return api.post('/auth/login', { username, password })
+}
+```
+
+## 在组件中使用
+在组件中使用API请求的示例：
+
+```javascript
+// 在组件中
+import { ref } from 'vue'
+import { register } from '@/utils/api/auth'
+
+export default {
+  setup() {
+    const form = ref({
+      username: '',
+      email: '',
+      password: '',
+      confirm_password: ''
+    })
+    const loading = ref(false)
+    const error = ref(null)
+
+    const handleRegister = async () => {
+      loading.value = true
+      try {
+        const result = await register(form.value)
+        // 处理注册成功
+      } catch (err) {
+        error.value = '注册失败'
+        console.error(err)
+      } finally {
+        loading.value = false
+      }
+    }
+
+    return { form, loading, error, handleRegister }
+  }
+}
+```

@@ -3,8 +3,39 @@ description:
 globs:
 alwaysApply: true
 ---
+# 代码风格指南
 
-# Your rule content
+## 代码格式化
 
-- You can @ files here
-- You can use markdown but dont have to
+项目使用 ESLint 和 Prettier 进行代码格式化和规范检查。
+- [.eslintrc.json](mdc:eslint.config.js): ESLint 配置
+- [.prettierrc.json](mdc:.prettierrc.json): Prettier 配置
+
+## 命名规范
+
+- **组件**: PascalCase (如 `MyComponent.vue`)
+- **文件**: 
+  - Vue 组件: PascalCase (如 `MyComponent.vue`)
+  - JavaScript 文件: camelCase (如 `myUtils.js`)
+- **变量和函数**: camelCase
+- **常量**: UPPER_SNAKE_CASE
+- **CSS 类**: kebab-case
+
+## Vue 组件风格
+
+- 组件使用 `<script setup>` 语法
+- 优先使用组合式 API 而不是选项式 API
+- Props 定义应明确类型和默认值
+- 事件名使用 kebab-case
+
+## 代码检查
+
+运行代码检查:
+```bash
+npm run lint
+```
+
+格式化代码:
+```bash
+npm run format
+```

@@ -1,12 +1,12 @@
 <script setup>
 // 导入页面组件
-import Sidebar from '../components/Sidebar.vue'
-import TopNavigation from '../components/TopNavigation.vue'
-import StoriesSection from '../components/StoriesSection.vue'
-import LiveChannels from '../components/LiveChannels.vue'
-import CarouselBanner from '../components/CarouselBanner.vue'
-import PopularCategories from '../components/PopularCategories.vue'
-import RecommendedVideos from '../components/RecommendedVideos.vue'
+import Sidebar from '../components/layout/Sidebar.vue'
+import TopNavigation from '../components/layout/TopNavigation.vue'
+import StoriesSection from '../components/pages/home/StoriesSection.vue'
+import LiveChannels from '../components/pages/home/LiveChannels.vue'
+import CarouselBanner from '../components/pages/home/CarouselBanner.vue'
+import PopularCategories from '../components/pages/home/PopularCategories.vue'
+import RecommendedVideos from '../components/pages/home/RecommendedVideos.vue'
 </script>
 
 <template>

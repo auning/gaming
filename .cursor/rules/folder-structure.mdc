@@ -1,0 +1,46 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 文件夹结构规范
+
+## 组件目录结构
+组件应根据其功能和用途分类存放在以下目录中：
+
+- `src/components/common/`: 通用组件，可在多个场景复用
+- `src/components/layout/`: 布局相关组件，如页眉、页脚、侧边栏等
+- `src/components/features/`: 业务功能组件，实现特定业务逻辑
+- `src/components/pages/`: 页面级组件，通常与路由对应
+- `src/components/ui/`: UI元素组件，如按钮、输入框等（建议添加）
+
+## 业务模块结构
+业务功能组件应按照功能模块进行组织：
+
+```
+src/components/features/
+  ├── auth/            # 认证相关组件
+  ├── user/            # 用户管理相关组件
+  ├── product/         # 产品相关组件
+  └── ...
+```
+
+## 页面组件结构
+页面组件应按照路由结构组织：
+
+```
+src/components/pages/
+  ├── home/            # 首页相关组件
+  ├── login/           # 登录页相关组件
+  └── ...
+```
+
+## 导入路径规范
+- 使用 `@` 别名导入（已在 [vite.config.js](mdc:vite.config.js) 中配置）
+- 优先使用相对路径导入同目录或子目录组件
+- 避免过深的相对路径（如 `../../../../`）
+
+## 文件命名约定
+- 组件文件使用 PascalCase（如 `UserProfile.vue`）
+- 工具函数使用 camelCase（如 `formatDate.js`）
+- 常量文件使用 SNAKE_CASE（如 `API_ENDPOINTS.js`）

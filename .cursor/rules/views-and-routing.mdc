@@ -10,7 +10,6 @@ alwaysApply: true
 
 主要视图：
 - [HomeView.vue](mdc:src/views/HomeView.vue): 首页
-- [AboutView.vue](mdc:src/views/AboutView.vue): 关于页面
 
 ## 路由配置
 路由配置文件位于 [src/router/index.js](mdc:src/router/index.js)。
@@ -18,6 +17,6 @@ alwaysApply: true
 路由导航应当使用 `<RouterLink>` 组件和 `router.push()` 方法。
 
 ## 视图命名规范
-- 视图组件以 `View` 后缀命名（如 `HomeView`、`AboutView`）
+- 视图组件以 `View` 后缀命名（如 `HomeView`）
 - 使用 PascalCase 命名法
 - 视图文件名与组件名匹配

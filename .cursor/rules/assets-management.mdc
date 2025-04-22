@@ -1,0 +1,41 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 资源管理指南
+
+## 资源目录结构
+项目的静态资源文件位于 [src/assets/](mdc:src/assets) 目录中，包含以下内容：
+
+- `icons/`: 图标资源
+- `images/`: 图片资源
+- `main.css`: 全局主样式文件
+- `base.css`: 基础变量和重置样式
+
+## 资源使用规范
+
+### 图标
+- 图标应放置在 `src/assets/icons/` 目录下
+- SVG格式图标优先使用，便于样式调整和性能优化
+
+### 图片
+- 图片应放置在 `src/assets/images/` 目录下
+- 大型图片应考虑压缩和优化
+
+### CSS命名规范
+- 全局样式定义在 `main.css` 和 `base.css` 中
+- 组件特定样式应使用 `<style scoped>` 在组件内定义
+- 类名使用 kebab-case（如 `header-section`，`nav-item`）
+
+## 资源导入
+全局样式在 [src/main.js](mdc:src/main.js) 中导入：
+```javascript
+import './assets/main.css'
+```
+
+组件中使用资源的示例：
+```javascript
+import IconName from '@/assets/icons/icon-name.svg'
+import imageUrl from '@/assets/images/image-name.jpg'
+```
